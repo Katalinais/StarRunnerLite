@@ -1,0 +1,6 @@
+class ScoreService {
+  constructor(repository) { this.repository = repository; }
+  getTopScores(limit = 10) { /* ordena puntajes */ }
+  addScore(name, score) { /* valida y guarda */ }
+}
+module.exports = ScoreService;
