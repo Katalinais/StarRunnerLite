@@ -1,4 +1,0 @@
-class ScoreService {
-  constructor(repository) { this.repository = repository; }
-}
-module.exports = ScoreService;
