@@ -15,6 +15,7 @@ export class Spawner {
     });
   }
 
+  // Obstáculo pequeño → solo ocupa un carril
   spawnSmallObstacle() {
     const lane = choose(this.lanes);
 
@@ -31,6 +32,7 @@ export class Spawner {
     ]);
   }
 
+  // Obstáculo grande → ocupa todos los carriles (bloque completo)
   spawnBigObstacle() {
     this.lanes.forEach((lane) => {
       add([

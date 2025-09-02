@@ -1,6 +1,7 @@
 export class PlayerController {
-  constructor(lanes, input) {
+  constructor(lanes, input, scoreUI) {
     this.lanes = lanes;
+    this.scoreUI = scoreUI;
 
     this.player = add([
       sprite("bean"),
@@ -61,15 +62,22 @@ export class PlayerController {
   }
 
   setupCollisions() {
+    this.player.onCollide("coin", (c) => {
+      destroy(c);
+      this.scoreUI.add(1);
+    });
+
+    // Obstáculo pequeño → se esquiva cambiando de carril
     this.player.onCollide("obstacle-small", () => {
       if (!this.player.isJumping) {
-        go("gameover");
+        go("gameover", this.scoreUI.value);
       }
     });
 
+    // Obstáculo grande → solo se esquiva saltando
     this.player.onCollide("obstacle-big", () => {
       if (!this.player.isJumping) {
-        go("gameover");
+        go("gameover", this.scoreUI.value);
       }
     });
   }

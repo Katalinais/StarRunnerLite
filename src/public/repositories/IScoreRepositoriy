@@ -1,5 +1,0 @@
-class IScoreRepository {
-  getAll() { throw new Error("No implementado"); }
-  saveAll(scores) { throw new Error("No implementado"); }
-}
-module.exports = IScoreRepository;
