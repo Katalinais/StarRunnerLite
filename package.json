@@ -2,7 +2,12 @@
 	"name": "StarRunnerLite",
 	"scripts": {
 		"build": "esbuild --bundle src/main.js --outfile=www/main.js --minify",
-		"dev": "esbuild --bundle src/main.js --outfile=www/main.js --servedir=www",
+		"dev": "nodemon server.js --ignore src/data/scores.json",
 		"bundle": "npm run build && mkdir -p dist && zip -r dist/game.zip www -x \"**/.DS_Store\""
+	},
+	"dependencies": {
+		"esbuild": "^0.25.9",
+		"express": "^5.1.0",
+		"nodemon": "^3.1.10"
 	}
 }
