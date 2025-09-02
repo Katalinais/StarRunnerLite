@@ -1,7 +1,6 @@
 export class PlayerController {
-  constructor(lanes, input, scoreUI) {
+  constructor(lanes, input) {
     this.lanes = lanes;
-    this.scoreUI = scoreUI;
 
     this.player = add([
       sprite("bean"),
@@ -62,21 +61,15 @@ export class PlayerController {
   }
 
   setupCollisions() {
-    this.player.onCollide("coin", (c) => {
-      destroy(c);
-      this.scoreUI.add(1);
-    });
-
     this.player.onCollide("obstacle-small", () => {
       if (!this.player.isJumping) {
-        go("gameover", this.scoreUI.value);
+        go("gameover");
       }
     });
 
-    
     this.player.onCollide("obstacle-big", () => {
       if (!this.player.isJumping) {
-        go("gameover", this.scoreUI.value);
+        go("gameover");
       }
     });
   }
