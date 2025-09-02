@@ -1,0 +1,10 @@
+const fs = require("fs");
+const path = require("path");
+const IScoreRepository = require("./IScoreRepository");
+
+class FileScoreRepository extends IScoreRepository {
+  constructor(filePath) { /* inicializa archivo */ }
+  getAll() { /* leer JSON */ }
+  saveAll(scores) { /* escribir JSON */ }
+}
+module.exports = FileScoreRepository;
