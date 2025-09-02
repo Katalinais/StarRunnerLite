@@ -67,14 +67,13 @@ export class PlayerController {
       this.scoreUI.add(1);
     });
 
-    // Obstáculo pequeño → se esquiva cambiando de carril
     this.player.onCollide("obstacle-small", () => {
       if (!this.player.isJumping) {
         go("gameover", this.scoreUI.value);
       }
     });
 
-    // Obstáculo grande → solo se esquiva saltando
+    
     this.player.onCollide("obstacle-big", () => {
       if (!this.player.isJumping) {
         go("gameover", this.scoreUI.value);
