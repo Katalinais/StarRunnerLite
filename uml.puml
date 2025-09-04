@@ -1,0 +1,75 @@
+@startuml
+
+package "Frontend (public)" {
+  class GameFacade {
+    + start()
+    + restart()
+    + saveScore(name, score)
+  }
+
+  interface InputAdapter {
+    + onMoveLeft(callback)
+    + onMoveRight(callback)
+    + onJump(callback)
+  }
+
+  class KeyboardInputAdapter
+  class SimulatedInputAdapter
+
+  class PlayerController {
+    + move()
+    + jump()
+    + collide()
+  }
+
+  class Spawner {
+    + spawnEnemy()
+  }
+
+  interface IScoreService {
+    + getScores()
+    + saveScore(name, score)
+  }
+
+  class HttpScoreService
+  class ScoreUI
+  class GameOverUI
+  class GameContainer
+}
+
+package "Backend" {
+  class ScoreController {
+    + GET /scores
+    + POST /scores
+  }
+
+    + getTopScores()
+    + save(score)
+  }
+
+  class ScoreService
+}
+
+package "Data" {
+  class scores.json
+}
+
+package "Core" {
+  class server.js
+  class main.js
+}
+
+GameFacade --> InputAdapter
+GameFacade --> PlayerController
+GameFacade --> Spawner
+GameFacade --> IScoreService
+IScoreService <|.. HttpScoreService
+InputAdapter <|.. KeyboardInputAdapter
+InputAdapter <|.. SimulatedInputAdapter
+GameFacade --> ScoreUI
+GameFacade --> GameOverUI
+
+HttpScoreService --> ScoreController
+ScoreController --> ScoreService
+
+@enduml
