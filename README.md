@@ -79,7 +79,7 @@ cd StarRunnerLite
 ```
 3. **Install dependencies**
 ```bash
-npm install nodemon.js
+npm install nodemon
 ```
 4. **Start the server**
 ```bash
